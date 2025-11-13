@@ -17,7 +17,11 @@ const options = {
     servers: [
       {
         url: "http://localhost:3000",
-        description: "Development server",
+        description: "Local server",
+      },
+      {
+        url: "http://localhost:3000",
+        description: "Local server",
       },
     ],
     components: {
