@@ -31,17 +31,21 @@ export const protect = (
       (req as IAuthRequest).userId = decoded.id;
 
       next();
+      return; // ✅ Tambahkan return setelah next()
     } catch (error) {
       console.error("JWT Error:", error);
       res
         .status(401)
         .json({ success: false, message: "Tidak terotorisasi, token gagal" });
+      return; // ✅ Tambahkan return
     }
   }
 
+  // ✅ Pindahkan pengecekan !token ke luar if block
   if (!token) {
     res
       .status(401)
       .json({ success: false, message: "Tidak terotorisasi, tidak ada token" });
+    return; // ✅ Tambahkan return
   }
 };

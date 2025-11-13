@@ -39,6 +39,10 @@ const userSchema: Schema = new Schema(
   { timestamps: true }
 );
 
+// ✅ Indexes untuk performance
+userSchema.index({ email: 1 }); // Index untuk pencarian by email
+userSchema.index({ username: 1 }); // Index untuk pencarian by username
+
 // 4. Pre-save hook untuk hashing password
 userSchema.pre<IUserModel>("save", async function () {
   if (!this.isModified("password")) return;
